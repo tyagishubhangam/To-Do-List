@@ -56,23 +56,26 @@ function MyComponent() {
     
 
     return(
-        <>
+        <div className="container">
         <h1 className="heading">To Do List</h1>
         <input type="text" placeholder="Enter the task" id="task-box" onChange={handleInputChange} value={newTask}/>
-        <button onClick={addTask}>Add Task</button>
+        <button className="add-task-btn" onClick={addTask}>Add Task</button>
         <ul>
             {tasks.map(
-                (task,index) => 
-                <li key={index}>{task} 
-                <button onClick={()=>deleteTask(index)}>Delete</button>
-                <button onClick={()=>moveUp(index)}>⬆️</button>
-                <button onClick={()=>moveDown(index)}>⬇️</button>
+                (task,index) => (
+                <li key={index}>
+                    <span>{task} </span>
+                    <div className="button-group" >
+                <button className="delete-task-btn" onClick={()=>deleteTask(index)}>Delete</button>
+                <button className="up-btn" onClick={()=>moveUp(index)}>⬆️</button>
+                <button className="down-btn" onClick={()=>moveDown(index)}>⬇️</button>
+                </div>
                 </li>
                 
                 
-            )}
+            ))}
         </ul>
-        </>
+        </div>
     )
 }
 
